@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.cell{
+  flex: 0 0 33%;
+  height: 5vh;
+  display: inline;
+  border: 2px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.smallBoard{
+  border: 2px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 0 0 33%;
+}
+
+.largeBoard{
+  display: flex;
+  flex-wrap: wrap;
+  width: 50vw;
+}
