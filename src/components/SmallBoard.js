@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import Cell from './Cell'
-// import Eval from '../util/Eval'
+import Eval from '../util/Eval'
 import '../index.css'
 
 class SmallBoard extends Component {
@@ -24,18 +24,16 @@ class SmallBoard extends Component {
   }
 
 updateBoardLayout(i, xVal){
-  this.setState({
-    boardLayout: {
-      1: xVal
-    }
-  })
-  console.log(this.state.boardLayout)
+  this.state.boardLayout[i] = xVal ? "X" : "O"
+  this.forceUpdate()
+  Eval.evalBoard(this.state.boardLayout)
+
 }
 
 render(){
   let cells = this.state.cellIndeces.map ( (i) => {
     return (
-      <Cell updateBoardLayout={this.updateBoardLayout.bind(this)} performTurn={this.props.performTurn} turn={this.props.turn} key={i} cellIndex={i}/>
+      <Cell updateBoardLayout={this.updateBoardLayout.bind(this)} nextTurn={this.props.nextTurn} turn={this.props.turn} key={i} cellIndex={i}/>
     )
   })
 

@@ -18,13 +18,12 @@ class Cell extends Component {
       }
       this.setState({
         xVal: turn
-      })
-      this.props.performTurn()
+      }, () => this.props.updateBoardLayout(this.props.cellIndex, this.state.xVal))
+      this.props.nextTurn()
     }
-    console.log(this.state.xVal)
 
     // evaluate small board after each player turn
-    this.props.updateBoardLayout(this.props.cellIndex, this.state.xVal)
+
   }
 
   render(){

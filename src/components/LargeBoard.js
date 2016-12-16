@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import SmallBoard from './SmallBoard'
-import Eval from '../util/Eval'
+// import Eval from '../util/Eval'
 import '../index.css'
 
 class LargeBoard extends Component {
@@ -13,17 +13,17 @@ class LargeBoard extends Component {
     }
   }
 
-  performTurn(){
+  nextTurn(){
     this.setState({
       firstPlayerTurn: !this.state.firstPlayerTurn
     })
-    Eval.evalBoard()
+    // Eval.evalBoard()
   }
 
   render(){
     let smallBoards = this.boardIndeces.map ( (i) => {
       return (
-        <SmallBoard performTurn={this.performTurn.bind(this)} turn={this.state.firstPlayerTurn} key={i} />
+        <SmallBoard nextTurn={this.nextTurn.bind(this)} turn={this.state.firstPlayerTurn} key={i} />
       )
     })
 
