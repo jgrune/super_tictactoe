@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+var classNames = require('classnames')
 import Cell from './Cell'
 import Eval from '../util/Eval'
 import '../index.css'
@@ -42,7 +43,11 @@ allowableClick(){
 }
 
 render(){
-
+  let classes = classNames({
+    'smallBoard': true,
+    'active': this.props.allowableBoard === this.props.boardIndex
+  })
+  
   let cells = this.state.cellIndeces.map ( (i) => {
     return (
       <Cell updateBoardLayout={this.updateBoardLayout.bind(this)} nextTurn={this.props.nextTurn}
@@ -61,7 +66,7 @@ render(){
     )
   } else {
     return(
-      <div className="smallBoard">
+      <div className={classes}>
         {cells}
       </div>
     )
