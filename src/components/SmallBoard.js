@@ -25,8 +25,11 @@ class SmallBoard extends Component {
   }
 
 updateBoardLayout(i, xVal){
-  this.state.boardLayout[i] = xVal ? "X" : "O"
-  this.forceUpdate()
+  let boardLayout = this.state.boardLayout
+  boardLayout[i] = xVal ? "X" : "O"
+  this.setState({
+    boardLayout: boardLayout
+  })
   if(Eval.evalBoard(this.state.boardLayout)){
     this.setState({
       wonBy: Eval.evalBoard(this.state.boardLayout)
@@ -47,7 +50,7 @@ render(){
     'smallBoard': true,
     'active': this.props.allowableBoard === this.props.boardIndex
   })
-  
+
   let cells = this.state.cellIndeces.map ( (i) => {
     return (
       <Cell updateBoardLayout={this.updateBoardLayout.bind(this)} nextTurn={this.props.nextTurn}
