@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+var classNames = require('classnames')
 import '../index.css'
 
 class Cell extends Component {
@@ -27,8 +28,14 @@ class Cell extends Component {
   }
 
   render(){
+    let classes = classNames({
+      'cell': true,
+      'x': this.state.xVal,
+      'o': !this.state.xVal
+    })
+
     return(
-      <div className="cell" onClick={(evt) => this.clickOn(evt, this.props.turn)}></div>
+      <div className={classes} onClick={(evt) => this.clickOn(evt, this.props.turn)}></div>
     )
   }
 }

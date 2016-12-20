@@ -51,6 +51,12 @@ render(){
     'active': this.props.allowableBoard === this.props.boardIndex
   })
 
+  let winClasses = classNames({
+    'boardWin': true,
+    'x': this.state.wonBy === "X",
+    'o': this.state.wonBy === "O"
+  })
+
   let cells = this.state.cellIndeces.map ( (i) => {
     return (
       <Cell updateBoardLayout={this.updateBoardLayout.bind(this)} nextTurn={this.props.nextTurn}
@@ -63,7 +69,7 @@ render(){
 
   if (this.state.wonBy){
     return(
-      <div className="boardWin">
+      <div className={winClasses}>
         {this.state.wonBy}
       </div>
     )
