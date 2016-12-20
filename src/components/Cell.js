@@ -10,19 +10,19 @@ class Cell extends Component {
   }
 
   clickOn(evt, turn){
-    if(!evt.target.innerHTML){
-      if(turn){
-        evt.target.append("X")
-      } else {
-        evt.target.append("O")
+    if(this.props.allowableClick()){
+      if(!evt.target.innerHTML){
+        if(turn){
+          evt.target.append("X")
+        } else {
+          evt.target.append("O")
+        }
+        this.setState({
+          xVal: turn
+        }, () => this.props.updateBoardLayout(this.props.cellIndex, this.state.xVal))
+        this.props.nextTurn(this.props.cellIndex)
       }
-      this.setState({
-        xVal: turn
-      }, () => this.props.updateBoardLayout(this.props.cellIndex, this.state.xVal))
-      this.props.nextTurn()
     }
-
-    // evaluate small board after each player turn
 
   }
 

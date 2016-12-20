@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: helvetica;
 }
 
 main {
@@ -12,24 +12,39 @@ main {
 }
 
 .cell{
-  flex: 0 0 33%;
-  height: 5vh;
+  flex: 0 0 33.3%;
+  height: 50px;
   display: inline;
-  border: 2px solid red;
+  border: 1px solid grey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.boardWin{
+  flex: 0 0 33.3%;
+  height: 15vh;
+  display: inline;
+  border: 1px solid grey;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .smallBoard{
-  border: 2px solid black;
+  border: 2px solid aqua;
   display: flex;
   flex-wrap: wrap;
-  flex: 0 0 33%;
+  flex: 0 0 33.3%;
+
 }
 
 .largeBoard{
   display: flex;
   flex-wrap: wrap;
-  width: 50vw;
+  width: 470px;
+}
+
+.active{
+  border: 2px solid red;
 }
