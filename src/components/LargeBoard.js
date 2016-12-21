@@ -27,14 +27,13 @@ class LargeBoard extends Component {
 
   nextTurn(cellIndex){
     // set the next allowable small board equal to empty string (any board) or the value of the last cell index
-    console.log(this.state.boardLayout)
     let allowableBoard = this.state.boardLayout[cellIndex]? "" : cellIndex
 
     // switch player turn and set the allowable next small board
     this.setState({
       firstPlayerTurn: !this.state.firstPlayerTurn,
       allowableBoard: allowableBoard
-    }, console.log(this.state.boardLayout))
+    })
   }
 
   bigBoardEval(i, boardVal){

@@ -41,9 +41,7 @@ class SmallBoard extends Component {
       this.setState({
         wonBy: Eval.evalBoard(this.state.boardLayout)
       }, () => {
-
         // if small board has been won, evaluate big board for win condition
-        console.log('small board has been won by ' + this.state.wonBy)
         this.props.bigBoardEval(this.props.boardIndex, this.state.wonBy)
       })
     }

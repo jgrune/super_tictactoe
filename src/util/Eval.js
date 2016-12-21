@@ -37,17 +37,7 @@ let evalBoard = {
     else {
       return ""
     }
-  },
-
-  openNav() {
-    document.getElementById("mySidenav").style.opacity = "1";
-  },
-
-  /* Set the width of the side navigation to 0 */
-  closeNav() {
-    document.getElementById("mySidenav").style.opacity = "0";
   }
-
 }
 
 export default evalBoard

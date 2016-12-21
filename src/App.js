@@ -2,12 +2,20 @@ import React, { Component } from 'react';
 import './index.css';
 import LargeBoard from './components/LargeBoard'
 import Rules from './components/Rules'
-
+import {Button} from 'react-bootstrap'
 
 
 class App extends Component {
+  constructor(){
+    super()
+    this.state = {
+      smShow: false
+     }
+    }
 
   render() {
+    let smClose = () => this.setState({ smShow: false });
+
     return (
       <div>
         <main>
@@ -19,7 +27,14 @@ class App extends Component {
             <span id="letter5">r </span>
             <br/>Tic-Tac-Toe
             </h1>
+
+            <Button id="rules" bsStyle="primary" onClick={()=>this.setState({ smShow: true })}>
+              Game Rules
+            </Button>
+            <Rules show={this.state.smShow} onHide={smClose} />
+
             <LargeBoard />
+
           </main>
           <Rules />
         </div>
