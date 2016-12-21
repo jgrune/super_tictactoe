@@ -46,12 +46,8 @@ class LargeBoard extends Component {
   if(Eval.evalBoard(this.state.boardLayout)){
     this.setState({
       gameWin: Eval.evalBoard(this.state.boardLayout)
-    }, this.declareWinner)
+    })
   }
-}
-
-declareWinner(){
-  console.log("the game winner is " + this.state.gameWin + "!")
 }
 
 render(){
@@ -67,11 +63,27 @@ render(){
     )
   })
 
-  return(
-    <div className="largeBoard">
-      {smallBoards}
-    </div>
-  )
+  if(this.state.gameWin === "TIE"){
+    return(
+      <div className="winner">
+        It's a Tie! <br/>
+        <a href="/">Play Again?</a>
+      </div>
+    )
+  } else if(this.state.gameWin){
+    return(
+      <div className="winner">
+        Congratulations! Player {this.state.gameWin} wins!<br/>
+        <a href="/">Play Again?</a>
+      </div>
+    )
+  } else {
+    return(
+      <div className="largeBoard">
+        {smallBoards}
+      </div>
+    )
+  }
 }
 }
 
