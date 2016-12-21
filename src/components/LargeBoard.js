@@ -25,14 +25,16 @@ class LargeBoard extends Component {
     }
   }
 
-  nextTurn(boardIndex){
+  nextTurn(cellIndex){
+    // set the next allowable small board equal to empty string (any board) or the value of the last cell index
+    console.log(this.state.boardLayout)
+    let allowableBoard = this.state.boardLayout[cellIndex]? "" : cellIndex
+
+    // switch player turn and set the allowable next small board
     this.setState({
       firstPlayerTurn: !this.state.firstPlayerTurn,
-      allowableBoard: boardIndex
-    }, () =>
-    console.log("the board for the next turn is board #" + this.state.allowableBoard)
-  )
-    // Eval.evalBoard()
+      allowableBoard: allowableBoard
+    }, console.log(this.state.boardLayout))
   }
 
   bigBoardEval(i, boardVal){
@@ -40,33 +42,38 @@ class LargeBoard extends Component {
     boardLayout[i] = boardVal
     this.setState({
       boardLayout: boardLayout
-    })
-    if(Eval.evalBoard(this.state.boardLayout)){
-      this.setState({
-        gameWin: Eval.evalBoard(this.state.boardLayout)
-      }, this.declareWinner)
     }
+  )
+  if(Eval.evalBoard(this.state.boardLayout)){
+    this.setState({
+      gameWin: Eval.evalBoard(this.state.boardLayout)
+    }, this.declareWinner)
   }
+}
 
-  declareWinner(){
-    console.log("the game winner is " + this.state.gameWin + "!")
-  }
+declareWinner(){
+  console.log("the game winner is " + this.state.gameWin + "!")
+}
 
-  render(){
-    let smallBoards = this.boardIndeces.map ( (i) => {
-      return (
-        <SmallBoard bigBoardEval={this.bigBoardEval.bind(this)} nextTurn={this.nextTurn.bind(this)} turn={this.state.firstPlayerTurn} key={i}
+render(){
+  let smallBoards = this.boardIndeces.map ( (i) => {
+    return (
+      <SmallBoard
+        bigBoardEval={this.bigBoardEval.bind(this)}
+        nextTurn={this.nextTurn.bind(this)}
+        firstPlayerTurn={this.state.firstPlayerTurn}
+        key={i}
         allowableBoard={this.state.allowableBoard}
         boardIndex={i} />
-      )
-    })
-
-    return(
-      <div className="largeBoard">
-        {smallBoards}
-      </div>
     )
-  }
+  })
+
+  return(
+    <div className="largeBoard">
+      {smallBoards}
+    </div>
+  )
+}
 }
 
 export default LargeBoard

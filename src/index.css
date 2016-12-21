@@ -21,9 +21,32 @@ body {
 }
 main {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
+}
+h1{
+  font-size: 3em;
+  margin-top: -100px;
+  margin-bottom: 75px;
+  text-align: center;
+}
+
+#letter1{
+  color: #D69A66
+}
+#letter2{
+  color: #FDF8DC
+}
+#letter3{
+  color: #1AA6D0
+}
+#letter4{
+  color: #E6858D
+}
+#letter5{
+  color: #928F1A
 }
 .x{
   color: #FDA1B3;
@@ -42,7 +65,7 @@ main {
   justify-content: center;
 }
 .smallBoard{
-  border: 5px solid aqua;
+  border: 5px solid #1AA6D0;
   display: flex;
   flex-wrap: wrap;
   flex: 0 0 33.333%;
@@ -56,15 +79,16 @@ main {
 }
 .boardWin{
   background-color: rgba(0, 0, 0, 0.5);
-  font-size: 4em;
+  font-size: 2.5em;
   flex: 0 0 33.333%;
   height: 160px;
   display: inline;
-  border: 5px solid aqua;
+  border: 5px solid #1AA6D0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .active{
   border: 5px solid red;
+  transition: border 1s
 }
